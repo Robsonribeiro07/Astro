@@ -1,6 +1,6 @@
 'use client'
 import { DropdownMenu, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import AvatarProfile from "./avatar";
+import Avatar from 'react-avatar'
 import { ShowDetailsProfile } from "./more-details-profile";
 
 export function AvatarProfileContent() {
@@ -8,7 +8,7 @@ export function AvatarProfileContent() {
         <DropdownMenu>
             <DropdownMenuTrigger>
                 
-              <AvatarProfile image_profile='https://res.cloudinary.com/ddrbxo7pj/image/upload/v1738187204/user_images/lq1hofpdmrwhzrzxmgtu.jpg'/>
+              <Avatar name="S" round  size="45" textSizeRatio={2} color="#77909a"/>
             </DropdownMenuTrigger>
 
             <ShowDetailsProfile/>   

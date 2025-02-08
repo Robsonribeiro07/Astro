@@ -3,6 +3,7 @@ import { usePaginationState } from "@/store/state-current-page";
 import { useFiterInput } from "@/store/use-filter";
 import { useQuery } from "@tanstack/react-query";
 import { useGetQueryKey } from "./use-get-query-key";
+import { useUser } from "@clerk/nextjs";
 
 export function useGetDataTransaction() {
     
@@ -12,13 +13,15 @@ export function useGetDataTransaction() {
 
     const {queryKey} = useGetQueryKey()
 
+    const {user} = useUser()
 
 
 
     const {data, isFetching, isError} = useQuery({
         queryKey: queryKey,
-        queryFn: () => GetTransction({UserId: '13', page: currentPage, Filter: filter  }),
+        queryFn: () => GetTransction({UserId: user!.id, page: currentPage, Filter: filter  }),
         staleTime: 300000,
+        enabled:!!user,
         
         refetchOnWindowFocus: false
     })
@@ -26,6 +29,7 @@ export function useGetDataTransaction() {
     if(isError) return {isError}
 
     if(isFetching) return {isFetching}
+
 
     return {transctions: data, isFetching: false}
 }

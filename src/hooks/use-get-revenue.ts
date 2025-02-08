@@ -13,7 +13,7 @@ export function UseGetRevenue() {
 
 
     const getRevenue = useCallback(() => {
-        const result = userData?.transactions.reduce<ResultRevenue>((acc, transaction) => {
+        const result = userData && userData.transactions.length > 0 && userData.transactions.reduce<ResultRevenue>((acc, transaction) => {
             if (transaction.TypeTransactions === 'Income') {
                 acc.totalIncome += transaction.Amount; 
             } else if (transaction.TypeTransactions === 'Outcome') {
@@ -38,8 +38,8 @@ export function UseGetRevenue() {
     const result = getRevenue();
 
     return {
-        totalIncome: ConvertNumberEmReal(result?.totalIncome),
-        totalOutcome: ConvertNumberEmReal(result?.totalOutcome),
-        totalRevenue: ConvertNumberEmReal(result?.totalRevenue)
+        totalIncome: ConvertNumberEmReal(result ? result.totalIncome : 0),
+        totalOutcome: ConvertNumberEmReal(result ? result.totalOutcome : 0),
+        totalRevenue: ConvertNumberEmReal(result ? result.totalRevenue : 0)
     };
 }

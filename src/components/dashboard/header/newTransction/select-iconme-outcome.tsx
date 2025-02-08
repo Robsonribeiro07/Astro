@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
 import { ChevronDownCircle, ChevronUpCircle } from "lucide-react";
-import { useState } from "react";
 
 
 interface ValueSelectProps {
@@ -12,8 +11,8 @@ interface ValueSelectProps {
 export function SelectIconmeOutcome({value, handleOnchange}: ValueSelectProps) {
 
 
-    const ButtonSelectedIncome = value === "Income" ? "bg-white text-black" : "bg-transparent "
-    const ButtonSelectedoutCome = value === "Outcome" ? "bg-white text-black" : "bg-transparent"
+    const ButtonSelectedIncome = value === "Income" ? "dark:bg-background text-background-foreground bg-purple-500 "  : "bg-transparent text-background"
+    const ButtonSelectedoutCome = value === "Outcome" ? "dark:bg-background text-background-foreground bg-purple-500" : "bg-transparent text-background"
 
 
 

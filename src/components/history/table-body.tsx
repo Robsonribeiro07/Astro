@@ -5,14 +5,16 @@ import { useStateShowDeleOrRemove } from "@/store/state-show-delete-or-edit";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale/pt-BR";
 import { ConvertNumberEmReal } from "@/functions/convert-number-em-real";
-import { NotFoundTransctions } from "./not-found-transctions";
 import { DeleteOrRemoveContent } from "./delete-or-remove/delete-or-remove-content";
+import { useEditTranscationContent } from "@/store/edit-transctions";
+import { NotFoundTransctions } from "./pagination/notfound-transcation/not-found-transctions";
 export function TableBodyContent() {
 
     const {transctions} = useGetDataTransaction()
 
     const {handleSetValue: setValue} = useStateShowDeleOrRemove()
 
+    const {setTransactionToEdit} = useEditTranscationContent()
 
     
     return (
@@ -22,12 +24,25 @@ export function TableBodyContent() {
             ): (
                 transctions?.map((transactions) => {
                    
-                    const {Amount,Description,CreateAt, transactionId, TypeTransactions} = transactions
+                    const {Amount,Description,CreateAt, transactionId, TypeTransactions,Category} = transactions
 
 
                     const handleSetValue = () => {
                         setValue(transactionId)
                     }
+
+                    const handleValueEdit = () => {
+                        console.log('ok')
+                        setTransactionToEdit({
+                            Amount,
+                            Description,
+                            Category,
+                            transactionId,
+                            TypeTransction: TypeTransactions
+                        })
+                    }
+
+                    
                     return (
                 <TableRow key={transactionId} onMouseOver={handleSetValue}>
                         <TableCell className="font-medium w-[40%] p-5">{Description}</TableCell>
@@ -37,7 +52,7 @@ export function TableBodyContent() {
                             locale: ptBR,
                             addSuffix: true})}
                             
-                            <DeleteOrRemoveContent id={transactionId}/>   
+                            <DeleteOrRemoveContent id={transactionId} hanleSetEditing={handleValueEdit} />   
 
                             </TableCell>
                 </TableRow>

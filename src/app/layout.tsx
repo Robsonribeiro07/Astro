@@ -4,6 +4,8 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import { QueryClientProvider } from "@tanstack/react-query";
 import queryClient from "@/lib/queryClient";
+import { ThemeProvider } from "@/components/theme-provider";
+import {ClerkProvider} from '@clerk/nextjs'
 
 
 const geistSans = Geist({
@@ -37,18 +39,29 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode 
 }>) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.className} ${poppins.variable} antialiased`}
       >
+        <ClerkProvider>
         <QueryClientProvider client={queryClient}>
         <Toaster position="top-center" richColors/>
+        <ThemeProvider
+        attribute='class'
+        storageKey="astroTheem"
+        defaultTheme="dark"
+        >
         {children}
+        {modal}
+        </ThemeProvider>
         </QueryClientProvider>
+        </ClerkProvider>
       </body>
     </html>
   );

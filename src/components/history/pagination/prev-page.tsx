@@ -6,7 +6,7 @@ export function PrevPage() {
     const {setPreviousPage} = usePaginationState()
     return (
         <PaginationItem>
-      <PaginationPrevious href="#"  onClick={setPreviousPage}/>
+      <PaginationPrevious  onClick={setPreviousPage}/>
     </PaginationItem>
     )
 }

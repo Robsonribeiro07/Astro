@@ -9,7 +9,7 @@ export function SearchContent() {
     const {filter} = useFiterInput()
  
     return (
-        <div className={`flex items-center gap-5}`}>
+        <div className={`flex items-center gap-10 w-f`}>
             <Input/>
             {filter && (
                 <LimpaFiltro/>

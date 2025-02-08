@@ -7,7 +7,7 @@ const Input = () => {
   const {setInputValue, inputValue} = useFiterInput()
   
   return (
-    <StyledWrapper className={`w-full`}>
+    <StyledWrapper className={`w-[85%]`}>
       <div className="brutalist-container mt-5">
         <input placeholder="Adicione um filtro" className="brutalist-input smooth-type " type="text" onChange={(e) => setInputValue(e.currentTarget.value)} value={inputValue}/>
         <label className="brutalist-label">ASTRO</label>

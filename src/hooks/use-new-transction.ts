@@ -10,6 +10,7 @@ import { Transactions } from '@/api/get-user-data'
 import { useStateModal } from '@/store/state-modal-new-transtions'
 import { useGetQueryKey } from './use-get-query-key'
 import { GenerateUniqueIdNewTransactions } from '@/functions/generate-uniqueId-new-transactions'
+import { useUser } from '@clerk/nextjs'
 
 
 const newTransctionSchema = z.object({
@@ -20,6 +21,8 @@ const newTransctionSchema = z.object({
 })
 export type NewTranscitionSchema = z.infer<typeof newTransctionSchema>
 export function useNewTransction() {
+
+    const {user} = useUser()
 
     const {close} = useStateModal()
 
@@ -76,7 +79,7 @@ export function useNewTransction() {
                 
                 const updateTransactions = [newTranscations, ...data]
                 
-                if(updateTransactions.length === 3) {
+                if(updateTransactions.length > 3) {
                     updateTransactions.pop()
                 } 
 
@@ -87,7 +90,6 @@ export function useNewTransction() {
 
         }
 
-        console.log(allTranscations)
     },
     onError: () => {
         toast.error('Ocorreu um erro ao adicionar a transção')
@@ -100,12 +102,13 @@ export function useNewTransction() {
 
     const valueNegaviteOrPositv = TypeTransction === 'Income' ? Amount : -Amount
     
+    if(!user) return
     mutate({
         Amount: Number(valueNegaviteOrPositv) * 100,
         Description, 
         TypeTransction,
          Category, 
-         User: '13',
+         User: user.id,
          transactionId: GenerateUniqueIdNewTransactions()
         })
 

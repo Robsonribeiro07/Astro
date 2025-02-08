@@ -6,10 +6,10 @@ export function NextPage() {
     const {setNextPage, isEndPage} = usePaginationState()
 
 
-    const isEndPagee = isEndPage ? 'text-[gray]' : 'text-white'
+    const isEndPagee = isEndPage ? 'text-[gray]' : 'text-primary'
     return (
-        <PaginationItem>
-      <PaginationNext onClick={setNextPage} className={isEndPagee} />
+        <PaginationItem className="">
+      <PaginationNext onClick={setNextPage} className={isEndPagee} data-testid='next-page' />
        </PaginationItem>
     )
 }

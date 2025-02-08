@@ -2,7 +2,6 @@
 import { DollarSign, FileText, Tag } from 'lucide-react';
 import React from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
-import { text } from 'stream/consumers';
 import styled from 'styled-components';
 
 interface interfaceInput {
@@ -24,7 +23,7 @@ const Input = ({placeholder, description, Icons, register, typeInput = 'text'}: 
         <button className="input__button__shadow " type='button'>
           {IconsSelected}
         </button>
-        <input type={typeInput}  className="input__search" placeholder={placeholder} {...register} />
+        <input type={typeInput}  className="input__search" placeholder={placeholder} {...register} required={false} />
       </div>
     </StyledWrapper>
   );

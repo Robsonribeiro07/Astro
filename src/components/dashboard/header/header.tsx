@@ -1,10 +1,14 @@
 import Image from 'next/image'
-import LogoSvg from '../../../../public/logo.svg'
 
 import LogoTwo from '../../../../public/image.png'
 import { NewTransctionButton } from './newTransction/new-transction-button'
 import { AvatarProfileContent } from '@/components/profile/avatar-profile'
+import { useGetLogoSvg } from '@/hooks/use-get-logo'
+import Link from 'next/link'
 export function Header() {
+
+    const {LogoSvg} = useGetLogoSvg()
+
     return (
         <header className='w-full flex justify-between'>
             <div className='flex relative items-center w-[30rem] '>
@@ -15,6 +19,9 @@ export function Header() {
             <div className='flex items-center gap-3'>
             <NewTransctionButton/>
             <AvatarProfileContent/>
+            <Link href={'/1-qr-code'}>
+            Abrir modal
+            </Link>
             </div>
         </header>
     )

@@ -16,8 +16,6 @@ export const useStateShowDeleOrRemove = create<StateShowDeleteOrRemove>((set, ge
         const currentStateModal = get().open
 
         if(currentStateModal) return
-
-        set({ isValue: '' })
     },
     open: false,
     toggle: () => set(state => ({ open:!state.open })),

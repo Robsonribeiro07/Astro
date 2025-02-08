@@ -2,7 +2,7 @@
 import { Pagination, PaginationContent, PaginationItem } from "../../ui/pagination";
 import { usePaginationState } from "@/store/state-current-page";
 import { PrevPage } from "./prev-page";
-import { NextPage } from "./next-page";
+import { NextPage } from "./next-page/next-page";
 
 export function Paginations() {
 

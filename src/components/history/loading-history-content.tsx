@@ -3,7 +3,7 @@ import { Skeleton } from "../ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
 export function HistoryContentSkeleton() {
     return (
-        <Table className="w-full">
+        <Table className="w-full " data-testid={'skeleton-card'}>
             <TableHeader>
                 <TableRow>
                     <TableHead>Descriçao</TableHead>
@@ -15,7 +15,6 @@ export function HistoryContentSkeleton() {
 
             <TableBody >
             {Array.from({length: 3}).map((_, i) => {
-                console.log(i)
                 return (
                     <TableRow key={i}>
                     <TableCell className="font-medium w-[40%] p-5 ">

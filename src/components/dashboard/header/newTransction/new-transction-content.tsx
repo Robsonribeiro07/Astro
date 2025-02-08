@@ -4,9 +4,9 @@ import { FormNewTransction } from "./form-new-transction";
 export function NewTransctionContent() {
     return (
         
-        <DialogContent className="min-w-fit">
+        <DialogContent className="min-w-fit bg-primary">
             <DialogHeader>
-                <DialogTitle className="font-[500]">
+                <DialogTitle className="font-[500] text-primary-foreground">
                     Nova transação
                 </DialogTitle>
             </DialogHeader>

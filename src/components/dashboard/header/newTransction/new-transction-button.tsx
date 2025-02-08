@@ -13,7 +13,7 @@ export function NewTransctionButton() {
       
      <Dialog onOpenChange={toggle} open={open}>
         <DialogTrigger className="select-none" asChild>
-            <Button className="p-5" variant='outline'>
+            <Button className="p-5 shadow-lg" variant='outline' >
              <Plus/> Nova Transaçao
             </Button>
         </DialogTrigger>
