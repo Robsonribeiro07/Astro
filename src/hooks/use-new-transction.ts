@@ -86,14 +86,22 @@ export function useNewTransction() {
                 return updateTransactions   
             })
 
+
             
 
         }
 
+        return { allTranscations}
+
     },
-    onError: () => {
+    onError: (_,__,contentx) => {
         toast.error('Ocorreu um erro ao adicionar a transção')
-    }
+        if(contentx) {
+            queryClient.setQueryData(queryKey, contentx.allTranscations)
+        }
+        
+    },
+    
    })
    
 

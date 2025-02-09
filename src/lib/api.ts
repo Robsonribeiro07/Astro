@@ -1,6 +1,6 @@
 import axios from 'axios'
 const api = axios.create({
-    baseURL: 'http://10.0.0.103:3034'
+    baseURL: 'https://backend-astro-w422.onrender.com'
 })
 
 export default api
