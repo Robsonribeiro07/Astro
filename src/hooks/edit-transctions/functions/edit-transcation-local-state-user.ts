@@ -29,15 +29,13 @@ export function EditTranscationLocalStateUser ({
                         transactionId,
                     }
                      
-                    const updateTranscation = data.transactions.map((transaction) => {
-                        if(transaction.transactionId === transactionId) {
-                            return newTransctions
-                        }
-                        return transaction
-                    })
                     return {
                         ...data,
-                        transactions: updateTranscation
+                        transactions: data.transactions.map(transaction => 
+                            transaction.transactionId === transactionId 
+                                ? newTransctions 
+                                : transaction
+                        )
                     }
                     
                 })

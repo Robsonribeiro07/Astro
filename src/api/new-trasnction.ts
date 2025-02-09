@@ -8,9 +8,15 @@ interface NewTrasnction {
     Category: string,
     TypeTransction: "Income" | "Outcome"
 }
-export async function NewTrasnction({User, Amount, Description,Category, TypeTransction,transactionId}: NewTrasnction) {
+export async function NewTrasnction({
+    User,
+    Amount, 
+    Description,
+    Category, 
+    TypeTransction,
+    transactionId}: NewTrasnction) {
 
-    const response = api.post('api/new-transactions', {
+    const response = await api.post<NewTrasnction>('api/new-transactions', {
         data: {
             User,
             Amount,
@@ -22,6 +28,6 @@ export async function NewTrasnction({User, Amount, Description,Category, TypeTra
         
     })
 
-    return (await response).data
+    return response.data
     
 }

@@ -91,7 +91,7 @@ export function useNewTransction() {
 
         }
 
-        return { allTranscations}
+        return { allTranscations }
 
     },
     onError: (_,__,contentx) => {
@@ -108,11 +108,13 @@ export function useNewTransction() {
    const handleNewTrasnction = ({Amount, Category, Description, TypeTransction}: NewTranscitionSchema) => {
 
 
-    const valueNegaviteOrPositv = TypeTransction === 'Income' ? Amount : -Amount
+    const valueNegaviteOrPositv = TypeTransction === 'Income' 
+    ? Number(Amount) 
+    : -Number(Amount)
     
     if(!user) return
     mutate({
-        Amount: Number(valueNegaviteOrPositv) * 100,
+        Amount: valueNegaviteOrPositv * 100,
         Description, 
         TypeTransction,
          Category, 
